@@ -7,3 +7,23 @@
 #greeting-container {
   margin-top: 20px;
 }
+
+#school {
+    color: blue;
+    font-style: italic;
+    text-decoration: none;
+}
+
+h1 {
+    text-align: center;
+    color: blue;
+    text-decoration-style: underline;
+}
+
+button {
+    border: none;
+    color: blue;
+    font-size: 22px;
+    background-color: rgb(150, 200, 100);
+    text-align: center;
+}
