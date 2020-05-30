@@ -17,7 +17,16 @@
  */
 function addRandomGreeting() {
   const greetings =
-      ['Hello world!', '¡Hola Mundo!', '你好，世界！', 'Bonjour le monde!'];
+      ['"The greatest glory in living lies not in never falling, \
+      but in rising every time we fall." -Nelson Mandela', '"The way \
+      to get started is to quit talking and begin doing." -Walt Disney',
+      '"Many of life\'s failures are people who did not realize how \
+      close they were to success when they gave up." -Thomas A. Edison',
+      'The supreme art of war is to subdue the enemy without fighting. -\
+      Sun Tzu', 'Opportunities multiply as they are seized. -Sun Tzu',
+      '"Learning never exhausts the mind." -Leonardo da Vinci',
+      '"Learn as if you were not reaching your goal and as though you were \
+      scared of missing it" -Confucius'];
 
   // Pick a random greeting.
   const greeting = greetings[Math.floor(Math.random() * greetings.length)];
