@@ -17,7 +17,14 @@
 h1 {
     text-align: center;
     color: blue;
-    text-decoration-style: underline;
+    text-decoration: underline;
+}
+
+h4 {
+    text-align: center;
+    font-style: italic;
+    color: red;
+    text-decoration: underline;
 }
 
 button {
@@ -26,4 +33,25 @@ button {
     font-size: 22px;
     background-color: rgb(150, 200, 100);
     text-align: center;
+}
+
+p.centre {
+    font-size: 700%;
+    display: inline;
+}
+
+a.nextx {
+    border: none;
+    color: white;
+    ALIGN: CENTER;
+    font-size: 50px;
+    background-color: blue;
+    text-align: center;
+}
+
+div.poem1 {
+    border: 50px 40px;
+    text-align: center;
+    border-radius: 5px;
+    background: green;
 }
