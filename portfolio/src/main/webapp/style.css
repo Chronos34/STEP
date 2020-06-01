@@ -18,7 +18,9 @@
 
 h1 {
     text-align: center;
-    color: blue;
+    font-size: 200%;
+    padding: 20px;
+    color: white;
     text-decoration: underline;
 }
 
@@ -65,7 +67,7 @@ a.blendin {
     text-decoration: none;
 }
 
-ul.poemspage {font-size: 200%;}
+ul#poemspage li {display: inline-block; text-decoration: none; padding: 15px;}
 
 div.poem1 {
     margin: 30%;
@@ -78,7 +80,18 @@ div.toprow {
     width: 100%;
     color: white;
     text-align: center;
-    background-color: black;
+    background-color: rgba(0, 0, 255, 0.829);
+}
+
+div.poems {
+    width: 100%;
+    font-size: 40px;
+    text-align: center;
+    background-color: rgb(57, 154, 235);
+}
+
+div.poems a, div.poems a:visited {
+    color: blue !important;
 }
 
 div.container {
@@ -95,21 +108,21 @@ div.brow {
     color: white;
     font-size: 110%;
     text-align: center;
-    background-color: black;
-    border-top: 5px lightsalmon;
+    background-color: rgba(0, 0, 255, 0.829);
 }
 
 div.lsidebar {
     width: 20%;
-    color: white;
     text-align: right;
-    background-color: burlywood;
+    background-color: rgba(75, 175, 241, 0.26);
 }
 
 div.rsidebar {
     width: 80%;
-    color: white;
+    color: rgb(255, 255, 255);
     text-align: center;
     padding: 150px;
     background-color: rgb(222, 206, 135);
 }
+
+a:visited {color: white;}
