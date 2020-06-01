@@ -7,3 +7,122 @@
 #greeting-container {
   margin-top: 20px;
 }
+
+* {box-sizing: border-box; margin: 0;}
+
+#school {
+    color: blue;
+    font-style: italic;
+    text-decoration: none;
+}
+
+h1 {
+    text-align: center;
+    font-size: 200%;
+    padding: 20px;
+    color: white;
+    text-decoration: underline;
+}
+
+h3 {
+    text-align: center;
+    font-style: italic;
+    color: white;
+    text-decoration: underline;
+}
+
+button {
+    border: none;
+    color: blue;
+    font-size: 22px;
+    background-color: rgb(150, 200, 100);
+    text-align: center;
+}
+
+p.centre {
+    font-size: 700%;
+    display: inline;
+}
+
+pre.lpge {
+    font-size: 600%;
+    display: inline;
+}
+
+a.nextx {
+    border: none;
+    color: white;
+    font-size: 50px;
+    text-align: center;
+    background-color: blue;
+}
+
+a:hover.blendIn {background-color: rgb(222, 206, 135);}
+
+a.blendin {
+    color: white;
+    font-size: 50px;
+    padding: 25px;
+    display: block;
+    text-decoration: none;
+}
+
+ul#poemspage li {display: inline-block; text-decoration: none; padding: 15px;}
+
+div.poem1 {
+    margin: 30%;
+    color: blue;
+    border-radius: 50px;
+    background: green;
+}
+
+div.toprow {
+    width: 100%;
+    color: white;
+    text-align: center;
+    background-color: rgba(0, 0, 255, 0.829);
+}
+
+div.poems {
+    width: 100%;
+    font-size: 40px;
+    text-align: center;
+    background-color: rgb(57, 154, 235);
+}
+
+div.poems a, div.poems a:visited {
+    color: blue !important;
+}
+
+div.container {
+    display: table;
+    width: 100%;
+}
+
+.column {display: table-cell;}
+
+div.brow {
+    width: 100%;
+    height: 20%;
+    float: bottom;
+    color: white;
+    font-size: 110%;
+    text-align: center;
+    background-color: rgba(0, 0, 255, 0.829);
+}
+
+div.lsidebar {
+    width: 20%;
+    text-align: right;
+    background-color: rgba(75, 175, 241, 0.26);
+}
+
+div.rsidebar {
+    width: 80%;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 150px;
+    background-color: rgb(222, 206, 135);
+}
+
+a:visited {color: white;}
