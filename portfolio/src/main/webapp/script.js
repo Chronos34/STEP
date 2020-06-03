@@ -41,3 +41,9 @@ async function getData() {
     const data = await response.text();
     document.getElementById('data').innerText = data;
 }
+
+async function getUsername() {
+    const response = await fetch('/background');
+    const name = await response.text();
+    document.getElementById('name').innerText = name;
+}

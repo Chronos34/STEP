@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+//This file requests usernames and displays a welcome message.
+
 package com.google.sps.servlets;
 
 import java.io.IOException;
@@ -22,39 +24,35 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+@WebServlet("/background")
+public class Background extends HttpServlet {
 
-/** Servlet that returns some example content. TODO: modify this file to handle comments data */
-@WebServlet("/data")
-public class DataServlet extends HttpServlet {
-
-  private String comments = "";
-  private ArrayList<String> messages = new ArrayList<>();
+  private String name = "";
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
+   
     response.setContentType("text/html;");
-    response.getWriter().println(comments);
+    response.getWriter().println(name);
   }
-  /*
+
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-      String statement = comment(request, "texts");
-      messages.add(statement);
+      String firstnme = retrievefstName(request, "firstname", "Anakin");
+      String lastnme = retrievelstName(request, "lastname", "Skywalker");
+      name = firstnme + ' ' + lastnme + '!';
 
-      if (messages.size() != 101) {
-          comments += statement + ' \n\n';
-      } else {
-          comments = "";
-          for (int i = 21; i < 101; 1++) {comments += messages[i] + ' \n\n';}
-      }
-
-      response.sendRedirect("/comments.html");
+      response.sendRedirect("/background.html");
   }
 
-  private String comment(HttpServletRequest request, String message) {
-    String comment = request.getParameter(message);
+  private String retrievefstName(HttpServletRequest request, String fstname, String defaultValue) {
+    String fname = request.getParameter(fstname);
     return fname;
-  }*/
+  }
+
+  private String retrievelstName(HttpServletRequest request, String lstname, String defaultValue) {
+    String lname = request.getParameter(lstname);
+    return lname;
+  }
 
 }
