@@ -42,12 +42,7 @@ public class DataServlet extends HttpServlet {
       String statement = comment(request, "texts");
       messages.add(statement);
 
-      if (messages.size() != 101) {
-          comments += statement + ' \n\n';
-      } else {
-          comments = "";
-          for (int i = 21; i < 101; 1++) {comments += messages[i] + ' \n\n';}
-      }
+      addcomment(messages, comments, statement);
 
       response.sendRedirect("/comments.html");
   }
@@ -55,6 +50,20 @@ public class DataServlet extends HttpServlet {
   private String comment(HttpServletRequest request, String message) {
     String comment = request.getParameter(message);
     return fname;
+  }
+
+  private void addcomment(ArrayList<String> msglist, \
+  String statementlist, String statements) {
+      //To self, fix this line later.
+      if (msglist.size() != 101) {
+          statementlist.concat(statement).concat('\n\n');
+      } else {
+          statementlist = "";
+          int starting_com = msglist.size() - 80;
+          for (int i = starting_com; i < msglist.size(); i++) {
+              statementlist.concat(msglist[i]).concat(' \n\n');
+          }
+      }
   }*/
 
 }
