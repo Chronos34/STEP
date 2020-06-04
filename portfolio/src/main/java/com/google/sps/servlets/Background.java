@@ -45,14 +45,12 @@ public class Background extends HttpServlet {
       response.sendRedirect("/background.html");
   }
 
-  private String retrieveFirstName(HttpServletRequest request, String FirstName, String defaultValue) {
-    String Firstname = request.getParameter(FirstName);
-    return Firstname;
+  private String retrieveFirstName(HttpServletRequest request, String firstName, String defaultValue) {
+    return request.getParameter(firstName);
   }
 
-  private String retrieveLastName(HttpServletRequest request, String LastName, String defaultValue) {
-    String Lastname = request.getParameter(LastName);
-    return Lastname;
+  private String retrieveLastName(HttpServletRequest request, String lastName, String defaultValue) {
+    return request.getParameter(lastName);
   }
 
 }

@@ -36,26 +36,29 @@ function addRandomQuote() {
   quoteContainer.innerText = quote;
 }
 
-async function displayComments() {
-    const response = await fetch('/data');
-    const comment = await response.json();
-    const messages = document.getElementById('display-comment');
-    comment.forEach((message) => { messages.appendChild(createMsgElement(message));})
+function displayComments() {
+  fetch('/data').then(response => response.json()).then((comments) => {
+    const commentListElement = document.getElementById('display-comment');
+    comments.forEach((comment) => {
+      commentListElement.appendChild(createMsgElement(comment));
+    })
+  });
+}
+
+
+function createMsgElement(comment) {
+  const msgElement = document.createElement('li');
+  msgElement.className = 'comment';
+
+  const statementElement = document.createElement('span');
+  statementElement.innerText = comment.message;
+
+  msgElement.appendChild(statementElement);
+  return msgElement;
 }
 
 async function getUsername() {
     const response = await fetch('/background');
     const name = await response.text();
     document.getElementById('name').innerText = name;
-}
-
-function createMsgElement(message) {
-  const MsgElement = document.createElement('li');
-  MsgElement.className = 'comments';
-
-  const MsgElement = document.createElement('span');
-  MsgElement.innerText = comments.comment;
-
-  MsgElement.appendChild(MsgElement);
-  return MsgElement;
 }
