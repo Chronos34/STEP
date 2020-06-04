@@ -35,6 +35,8 @@ import com.google.sps.data.Comment;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
+  private int commentCount;
+
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
@@ -45,12 +47,14 @@ public class DataServlet extends HttpServlet {
 
     List<Comment> comments = new ArrayList<>();
     for (Entity entity : results.asIterable()) {
+      if (commentCount == 0) {break;}
       long id = entity.getKey().getId();
       String Statement = (String) entity.getProperty("comment");
       long Time = (long) entity.getProperty("time");
 
       Comment messages = new Comment(id, Statement, Time);
       comments.add(messages);
+      commentCount--;
     }
 
     Gson gson = new Gson();
@@ -61,8 +65,15 @@ public class DataServlet extends HttpServlet {
   
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-      String statement = comment(request, "texts");
       long time = System.currentTimeMillis();
+      String statement = comment(request, "texts");
+      commentCount = maxComments(request, "preferedNumber");
+
+      if (commentCount < 0) {
+        response.setContentType("text/html");
+        response.getWriter().println("Please enter an integer between 0 and 100.");
+        return;
+      }
 
       addcomment(statement, time);
 
@@ -81,5 +92,17 @@ public class DataServlet extends HttpServlet {
 
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     datastore.put(comments);
+  }
+
+  private int maxComments(HttpServletRequest request, String preferredNumber) {
+      String choice = request.getParameter(preferredNumber);
+      int maxNumber;
+      try {
+      maxNumber = Integer.parseInt(choice);
+    } catch (NumberFormatException e) {
+      System.err.println("Could not convert to int: " + choice);
+      return -1;
+    }
+      return maxNumber;
   }
 }
