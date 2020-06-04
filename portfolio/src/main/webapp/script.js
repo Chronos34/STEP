@@ -57,6 +57,11 @@ function createMsgElement(comment) {
   return msgElement;
 }
 
+async function deleteMessages() {
+    await fetch('/delete-data', {method: 'POST'});
+    location.reload();
+}
+
 async function getUsername() {
     const response = await fetch('/background');
     const name = await response.text();

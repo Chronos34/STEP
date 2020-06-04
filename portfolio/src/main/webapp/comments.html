@@ -15,7 +15,7 @@
       <br>
       <label for="preferedNumber">How many comments do you want displayed?: </label>
       <input type="number" id="preferedNumber" 
-      name="preferedNumber" min="1" max="99" value="1"><br>
+      name="preferedNumber" min="1" max="99" value="50"><br>
       <br>
       <button type="Submit">Submit</button>
     </form>
@@ -23,6 +23,8 @@
     <hr/>
 
     <ul id="display-comment"></ul>
+
+    <button onclick="deleteMessages()">Delete All Comments</button>
 
   </body>
 </html>
