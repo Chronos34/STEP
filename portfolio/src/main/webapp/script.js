@@ -15,8 +15,8 @@
 /**
  * Adds a random greeting to the page.
  */
-function addRandomGreeting() {
-  const greetings =
+function addRandomQuote() {
+  const quotes =
       ['"The greatest glory in living lies not in never falling, \
       but in rising every time we fall." -Nelson Mandela', '"The way \
       to get started is to quit talking and begin doing." -Walt Disney',
@@ -29,11 +29,11 @@ function addRandomGreeting() {
       scared of missing it" -Confucius'];
 
   // Pick a random greeting.
-  const greeting = greetings[Math.floor(Math.random() * greetings.length)];
+  const quote = quotes[Math.floor(Math.random() * quotes.length)];
 
   // Add it to the page.
-  const greetingContainer = document.getElementById('greeting-container');
-  greetingContainer.innerText = greeting;
+  const quoteContainer = document.getElementById('quote-container');
+  quoteContainer.innerText = quote;
 }
 
 async function getData() {
