@@ -14,7 +14,9 @@
 
 package com.google.sps.data;
 
-/** An item on a todo list. */
+/** The purpose of this class is to make it possible to transfer
+comment objects to displayComments for an easy conversion of these
+objects to list elements for html.*/
 public final class Comment {
 
   private final long id;

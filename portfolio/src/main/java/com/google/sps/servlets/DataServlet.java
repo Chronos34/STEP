@@ -36,6 +36,8 @@ import com.google.appengine.api.datastore.DatastoreServiceFactory;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
+  //this is the number of comments that should
+  //be printed when the comments page is loaded
   private int commentCount = 99;
 
   @Override
@@ -47,6 +49,9 @@ public class DataServlet extends HttpServlet {
     PreparedQuery results = datastore.prepare(query);
 
     List<Comment> comments = new ArrayList<>();
+    //The loop below is storing Comment objects to make it
+    //easier for the function displayComments to create a list element
+    //on HTML.
     for (Entity entity : results.asIterable(FetchOptions.Builder.withLimit(commentCount))) {
       long id = entity.getKey().getId();
       String Statement = (String) entity.getProperty("comment");
