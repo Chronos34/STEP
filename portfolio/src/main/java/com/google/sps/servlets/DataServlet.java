@@ -18,7 +18,7 @@ import java.util.List;
 import java.io.IOException;
 import java.util.ArrayList;
 import com.google.gson.Gson;
-import com.google.sps.data.Task;
+//import com.google.sps.data.Task;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -34,11 +34,11 @@ import com.google.appengine.api.datastore.DatastoreServiceFactory;
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
-
+  String comment = "Hello";
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-    Query query = new Query("Comments").addSort("time", SortDirection.DESCENDING);
+    /*Query query = new Query("Comments").addSort("time", SortDirection.DESCENDING);
 
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     PreparedQuery results = datastore.prepare(query);
@@ -50,13 +50,13 @@ public class DataServlet extends HttpServlet {
       long timestamp = (long) entity.getProperty("time");
 
       Task message = new Task(id, title, timestamp);
-      comments.add(message);
+      comments.add(message);gson.toJson(comments)
     }
 
-    Gson gson = new Gson();
+    Gson gson = new Gson();*/
 
-    response.setContentType("application/json;");
-    response.getWriter().println(gson.toJson(comments));
+    response.setContentType("text/html;");
+    response.getWriter().println(comment);
   }
   
   @Override
