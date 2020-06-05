@@ -36,8 +36,8 @@ import com.google.appengine.api.datastore.DatastoreServiceFactory;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
-  //this is the number of comments that should
-  //be printed when the comments page is loaded
+  // This is the number of comments that should
+  // be printed when the comments page is loaded
   private int commentCount = 99;
 
   @Override
@@ -49,9 +49,9 @@ public class DataServlet extends HttpServlet {
     PreparedQuery results = datastore.prepare(query);
 
     List<Comment> comments = new ArrayList<>();
-    //The loop below is storing Comment objects to make it
-    //easier for the function displayComments to create a list element
-    //on HTML.
+    // The loop below is storing Comment objects to make it
+    // easier for the function displayComments to create a list element
+    // on HTML.
     for (Entity entity : results.asIterable(FetchOptions.Builder.withLimit(commentCount))) {
       long id = entity.getKey().getId();
       String Statement = (String) entity.getProperty("comment");
@@ -79,7 +79,7 @@ public class DataServlet extends HttpServlet {
         return;
       }
 
-      addcomment(statement, time);
+      addComment(statement, time);
 
       response.sendRedirect("/comments.html");
   }
@@ -88,7 +88,7 @@ public class DataServlet extends HttpServlet {
     return request.getParameter(message);
   }
 
-  private void addcomment(String statements, long timestamp) {
+  private void addComment(String statements, long timestamp) {
 
     Entity comments = new Entity("Comments");
     comments.setProperty("comment", statements);
