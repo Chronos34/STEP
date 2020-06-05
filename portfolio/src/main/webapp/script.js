@@ -15,8 +15,8 @@
 /**
  * Adds a random greeting to the page.
  */
-function addRandomGreeting() {
-  const greetings =
+function addRandomQuote() {
+  const quotes =
       ['"The greatest glory in living lies not in never falling, \
       but in rising every time we fall." -Nelson Mandela', '"The way \
       to get started is to quit talking and begin doing." -Walt Disney',
@@ -29,15 +29,41 @@ function addRandomGreeting() {
       scared of missing it" -Confucius'];
 
   // Pick a random greeting.
-  const greeting = greetings[Math.floor(Math.random() * greetings.length)];
+  const quote = quotes[Math.floor(Math.random() * quotes.length)];
 
   // Add it to the page.
-  const greetingContainer = document.getElementById('greeting-container');
-  greetingContainer.innerText = greeting;
+  const quoteContainer = document.getElementById('quote-container');
+  quoteContainer.innerText = quote;
 }
 
-async function getData() {
-    const response = await fetch('/data');
-    const data = await response.text();
-    document.getElementById('data').innerText = data;
+function displayComments() {
+  fetch('/data').then(response => response.json()).then((comments) => {
+    const commentListElement = document.getElementById('display-comment');
+    comments.forEach((comment) => {
+      commentListElement.appendChild(createMsgElement(comment));
+    })
+  });
+}
+
+
+function createMsgElement(comment) {
+  const msgElement = document.createElement('li');
+  msgElement.className = 'comment';
+
+  const statementElement = document.createElement('span');
+  statementElement.innerText = comment.message;
+
+  msgElement.appendChild(statementElement);
+  return msgElement;
+}
+
+async function deleteMessages() {
+    await fetch('/delete-data', {method: 'POST'});
+    location.reload();
+}
+
+async function getUsername() {
+    const response = await fetch('/background');
+    const name = await response.text();
+    document.getElementById('name').innerText = name;
 }

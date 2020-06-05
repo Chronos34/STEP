@@ -126,3 +126,5 @@ div.rsidebar {
 }
 
 a:visited {color: white;}
+
+p.background {display: inline; color: black;}
