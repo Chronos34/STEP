@@ -33,8 +33,8 @@ import com.google.appengine.api.datastore.DatastoreServiceFactory;
 
 
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
-@WebServlet("/data")
-public class DataServlet extends HttpServlet {
+@WebServlet("/data-gospel")
+public class GospelDataServlet extends HttpServlet {
 
   // This is the number of comments that should
   // be printed when the comments page is loaded
@@ -43,7 +43,7 @@ public class DataServlet extends HttpServlet {
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-    Query query = new Query("Anime").addSort("time", SortDirection.DESCENDING);
+    Query query = new Query("Gospel").addSort("time", SortDirection.DESCENDING);
 
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     PreparedQuery results = datastore.prepare(query);
@@ -81,7 +81,7 @@ public class DataServlet extends HttpServlet {
 
       addComment(statement, time);
 
-      response.sendRedirect("/anime.html");
+      response.sendRedirect("/gospel.html");
   }
 
   private String comment(HttpServletRequest request, String message) {
@@ -92,7 +92,7 @@ public class DataServlet extends HttpServlet {
 
     if (statements.trim().length() == 0) {return;}
 
-    Entity comments = new Entity("Anime");
+    Entity comments = new Entity("Gospel");
     comments.setProperty("comment", statements);
     comments.setProperty("time", timestamp);
 

@@ -36,9 +36,27 @@ function addRandomQuote() {
   quoteContainer.innerText = quote;
 }
 
-function displayComments() {
+function animeComments() {
   fetch('/data').then(response => response.json()).then((comments) => {
-    const commentListElement = document.getElementById('display-comment');
+    const commentListElement = document.getElementById('display-anime-comment');
+    comments.forEach((comment) => {
+      commentListElement.appendChild(createMsgElement(comment));
+    })
+  });
+}
+
+function secularComments() {
+  fetch('/data-secular').then(response => response.json()).then((comments) => {
+    const commentListElement = document.getElementById('display-secular-comment');
+    comments.forEach((comment) => {
+      commentListElement.appendChild(createMsgElement(comment));
+    })
+  });
+}
+
+function christianComments() {
+  fetch('/data-gospel').then(response => response.json()).then((comments) => {
+    const commentListElement = document.getElementById('display-christian-comment');
     comments.forEach((comment) => {
       commentListElement.appendChild(createMsgElement(comment));
     })
@@ -57,8 +75,24 @@ function createMsgElement(comment) {
   return msgElement;
 }
 
-async function deleteMessages() {
-    await fetch('/delete-data', {method: 'POST'});
+async function deleteGospelComments() {
+    const params = new URLSearchParams();
+    params.append("kind", "Gospel");
+    await fetch('/delete-data', {method: 'POST', body: params});
+    location.reload();
+}
+
+async function deleteSecularComments() {
+    const params = new URLSearchParams();
+    params.append("kind", "Secular");
+    await fetch('/delete-data', {method: 'POST', body: params});
+    location.reload();
+}
+
+async function deleteAnimeComments() {
+    const params = new URLSearchParams();
+    params.append("kind", "Anime");
+    await fetch('/delete-data', {method: 'POST', body: params});
     location.reload();
 }
 

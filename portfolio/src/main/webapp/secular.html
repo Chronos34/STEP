@@ -6,18 +6,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
-    <title>Welcome To Nanadom</title>
+    <title>Music: Secular</title>
 
     <link rel="stylesheet" href="style.css">
 
     <script src="script.js"></script>
   </head>
 
-  <body onload="getUsername()">
+  <body ALIGN=CENTER class="secular" onload="secularComments()">
 
-      <div class="row">
+    <div class="row">
 
-        <div class="toprow">
+        <div class="headers">
 
           <h1>Welcome To 
             <i style="color:red" class="logoHeader">L</i>
@@ -30,49 +30,36 @@
 
         </div>
 
-        <div class="poems">
+        <div class="pages">
 
             <ul id="poemspage">
                 <li><a class="poemslink poemslinks"
-                href="https://docs.google.com/document/d/1xqPC6ppFomAoO_QusfCwfv3-ngqruE7FIbb9IyLP4BI/edit?usp=sharing">
-                Based on a Quote</a></li>
+                href="index.html">Landing</a></li>
                 <li><a class="poemslink poemslinks"
-                href="https://docs.google.com/document/d/1elLNRgS5qW5JHn79W-dhSGqOj34e5_uke6qkbJ9BY70/edit?usp=sharing">
-                Love</a></li>
+                href="background.html">About Me</a></li>
                 <li><a class="poemslink poemslinks"
-                href="https://docs.google.com/document/d/1C6k8iKSnERFIdbIQWq72a4TD3EnXJLtX1HsMvWz698I/edit?usp=sharing">
-                Nature</a></li>
-                <li><a class="poemslink poemslinks"
-                href="https://docs.google.com/document/d/1ck-utOsNx9MykUwFhnJxeEANOLlmLJGjf5Y5_vW-OZA/edit?usp=sharing">
-                Life</a></li>
-                <li><a class="poemslink poemslinks"
-                href="https://docs.google.com/document/d/1EiSw-gRsUGGj5QrFrTKVdfLwclLj5X_EOs2kjYvbuOU/edit?usp=sharing">
-                A Crying World</a></li>
-                <li><a class="poemslink poemslinks"
-                href="https://docs.google.com/document/d/1nkLm7pd3IvMunu5eH7XUaOU5N9NeODvWnK7AkkqWPXY/edit?usp=sharing">
-                Discord</a></li>
-
+                href="image.html">Image</a></li>
             </ul>
 
         </div>
 
-      </div>
+    </div>
 
-      <div class="container">
+    <div class="container">
 
-          <div class="column lsidebar">
+          <div class="column musicbar">
 
-            <a rel="next" href="background.html" 
-            class="blendin blendIn"><i>Background</i></a>
-            <a rel="next" href="image.html" 
-            class="blendin blendIn"><i>Images</i></a>
+            <a rel="next" href="gospel.html" 
+            class="blendin blendIn"><i>Gospel</i></a>
             <a rel="next" href="anime.html" 
-            class="blendin blendIn"><i>Music</i></a>
+            class="blendin blendIn"><i>Anime</i></a>
+            <a rel="next" href="secular.html" 
+            class="blendin blendIn"><i>Secular</i></a>
 
 
           </div>
 
-          <div class="column rsidebar" style="colour:black">
+          <div class="column mainbar">
 
             <h1><strong>WELCOME!</strong></h1>
 
@@ -90,12 +77,6 @@
                 projects I have worked on:
 
                 <br>
-
-                <ul>
-                    <li>A basic Pokemon Game Simulation</li>
-                    <li>The marketplace platform on Codecademy</li>
-                    <li>A tourist sites search engine on Codecademy</li>
-                </ul>
 
             </p>
 
@@ -123,18 +104,47 @@
 
           </div>
 
-          <footer>
-            <hr>
-            <div class="brow" style="text-align: center; padding:50px">
-                <a href="https://github.com/Chronos34" target=_blank>GitHub</a>
-                <a href="https://www.linkedin.com/in/nanabaafiagyekum/" target=_blank>LinkedIn</a>
-                <a href="https://www.facebook.com/baafi.boatengagyekum" target=_blank>Facebook</a>
-                <p style="padding-top: 10px"><i>All That Is Well Ends Well!</i></p> 
-            </div>
+          <div class="column commentbar" ALIGN=LEFT>
+              
+              <form method="POST" action="/data-secular">
 
-          </footer>
+                <label for="texts">Comments: </label>
+                <input type="text" id="texts" name="texts"><br>
+                <br>
+                <label for="preferedNumber">No. Of Comments: </label>
+                <input type="number" id="preferedNumber" 
+                name="preferedNumber" min="1" max="99" value="50"><br>
+                <br>
 
-      </div>
-    
+                <button type="Submit">Submit</button>
+                
+              </form>
+
+            <hr/>
+
+            <ul id="display-secular-comment"></ul>
+
+            <button onclick="deleteSecularComments()">Delete All Comments</button>
+
+          </div>
+
+    </div>
+
   </body>
+
+  <footer>
+
+      <hr>
+
+      <div class="musicbrow" >
+
+          <a href="https://github.com/Chronos34" target=_blank>GitHub</a>
+          <a href="https://www.linkedin.com/in/nanabaafiagyekum/" target=_blank>LinkedIn</a>
+          <a href="https://www.facebook.com/baafi.boatengagyekum" target=_blank>Facebook</a>
+          <p style="padding-top: 10px"><i>All That Is Well Ends Well!</i></p> 
+
+    </div>
+
+  </footer>
+  
 </html>
