@@ -179,6 +179,7 @@ div.pages {
 
 div.musicbar {
     width: 15%;
+    position: fixed;
     text-align: left;
     background: rgba(0, 0, 0, 0.308);
 }
@@ -193,6 +194,7 @@ div.commentbar {
     width: 15%;
     padding: 0px;
     color: white;
+    position: fixed;
     text-align: left;
     background: rgba(0, 0, 0, 0.308);
 }
