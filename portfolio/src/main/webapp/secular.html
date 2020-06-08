@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <title>Music: Secular</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="script.js"></script>
+  </head>
+
+  <body ALIGN=CENTER class="secular" onload="secularComments()">
+
+    <div class="row">
+
+        <div class="headers">
+
+          <h1>Welcome To 
+            <i style="color:red" class="logoHeader">L</i>
+            <i style="color:orange" class="logoHeader">O</i>
+            <i style="color:magenta" class="logoHeader">O</i>
+            <i style="color:green" class="logoHeader">K</i>
+            <i style="color:blue" class="logoHeader">L</i>
+            <i style="color:indigo" class="logoHeader">E</i>
+          </h1>
+
+        </div>
+
+        <div class="pages">
+
+            <ul id="poemspage">
+                <li><a class="poemslink poemslinks"
+                href="index.html">Landing</a></li>
+                <li><a class="poemslink poemslinks"
+                href="background.html">About Me</a></li>
+                <li><a class="poemslink poemslinks"
+                href="image.html">Image</a></li>
+            </ul>
+
+        </div>
+
+    </div>
+
+    <div class="container">
+
+          <div class="column musicbar">
+
+            <a rel="next" href="gospel.html" 
+            class="blendin blendIn"><i>Gospel</i></a>
+            <a rel="next" href="anime.html" 
+            class="blendin blendIn"><i>Anime</i></a>
+            <a rel="next" href="secular.html" 
+            class="blendin blendIn"><i>Secular</i></a>
+
+
+          </div>
+
+          <div class="column mainbar">
+
+            <h1><strong>WELCOME!</strong></h1>
+
+            <p class="background">Hello <span id="name"></span>
+                It is nice to meet you. I am Nana Baafi Agyekum,
+                a student of <a href="https://www.rpi.edu/" id="school"
+                title="Rensselaer Polytechnic Institute" target=_blank>RPI</a>. I 
+                am a resident of Newark, New Jersey. I love to play soccer 
+                and write poems. A fun fact, I have visited <i>three</i> 
+                continents: <i>Africa, Europe</i> and <i>North America</i>. 
+                I love to eat mashed plantain(the locals of Ghana call it etoo). 
+                Here is a <a 
+                href="https://awholelotofcole.wordpress.com/2019/10/08/etomore-than-just-food-its-culture/" 
+                target=_blank>picture</a> of the dish. These are some of the 
+                projects I have worked on:
+
+                <br>
+
+            </p>
+
+            <p style="color:black">
+                I love to listen to music and watch anime during my leisure. As for the kind 
+                of music I enjoy, let's just say anything that has a good beat and rythm. I 
+                listen to Gospel Music, Reggae, Hip Hop and a whole lot. I love asian music in 
+                particular. <i>Have you heard "Yume to hazakura"?</i> <strong>Whhaaat?</strong> 
+                You should listen to this beautiful piece. Aside that, these songs by 
+                <strong>for King and Country</strong> are a must listen to: 
+                <i><strong>"Shoulders"</strong></i>, <i><strong>"Control"</strong></i>, 
+                <i><strong>"Pioneers"</strong></i>, and <i><strong>"Burn The Ships"</strong></i>. 
+                Don't forget <b>Hillsong United</b>! <i><strong>"So will I"</strong></i> is 
+                spectacular. I will share more about my all time favourites with you. In the 
+                meantime, please enjoy what you see and leave comments on what could be 
+                done better. Thank You!
+            </p>
+
+            <br>
+
+            <button onclick="addRandomQuote()">Click Here For Random Quotes</button>
+            <div id="quote-container"></div>
+
+            <br>
+
+          </div>
+
+          <div class="column commentbar" ALIGN=LEFT>
+              
+              <form method="POST" action="/data-secular">
+
+                <label for="texts">Comments: </label>
+                <input type="text" id="texts" name="texts"><br>
+                <br>
+                <label for="preferedNumber">No. Of Comments: </label>
+                <input type="number" id="preferedNumber" 
+                name="preferedNumber" min="1" max="99" value="50"><br>
+                <br>
+
+                <button type="Submit">Submit</button>
+                
+              </form>
+
+            <hr/>
+
+            <ul id="display-secular-comment"></ul>
+
+            <button onclick="deleteSecularComments()">Delete All Comments</button>
+
+          </div>
+
+    </div>
+
+  </body>
+
+  <footer>
+
+      <hr>
+
+      <div class="musicbrow" >
+
+          <a href="https://github.com/Chronos34" target=_blank>GitHub</a>
+          <a href="https://www.linkedin.com/in/nanabaafiagyekum/" target=_blank>LinkedIn</a>
+          <a href="https://www.facebook.com/baafi.boatengagyekum" target=_blank>Facebook</a>
+          <p style="padding-top: 10px"><i>All That Is Well Ends Well!</i></p> 
+
+    </div>
+
+  </footer>
+  
+</html>

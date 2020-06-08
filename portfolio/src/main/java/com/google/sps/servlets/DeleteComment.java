@@ -34,14 +34,15 @@ public class DeleteComment extends HttpServlet {
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     
-    deleteComment();
+    String kinds = request.getParameter("kind");
 
-    response.sendRedirect("/comments.html");
+    deleteComment(kinds);
+
   }
 
-  private void deleteComment() {
+  private void deleteComment(String kinds) {
 
-    Query query = new Query("Comments");
+    Query query = new Query(kinds);
 
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     PreparedQuery results = datastore.prepare(query);

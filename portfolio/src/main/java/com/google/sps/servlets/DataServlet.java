@@ -43,7 +43,7 @@ public class DataServlet extends HttpServlet {
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-    Query query = new Query("Comments").addSort("time", SortDirection.DESCENDING);
+    Query query = new Query("Anime").addSort("time", SortDirection.DESCENDING);
 
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     PreparedQuery results = datastore.prepare(query);
@@ -81,7 +81,7 @@ public class DataServlet extends HttpServlet {
 
       addComment(statement, time);
 
-      response.sendRedirect("/comments.html");
+      response.sendRedirect("/anime.html");
   }
 
   private String comment(HttpServletRequest request, String message) {
@@ -90,7 +90,9 @@ public class DataServlet extends HttpServlet {
 
   private void addComment(String statements, long timestamp) {
 
-    Entity comments = new Entity("Comments");
+    if (statements.trim().length() == 0) {return;}
+
+    Entity comments = new Entity("Anime");
     comments.setProperty("comment", statements);
     comments.setProperty("time", timestamp);
 
