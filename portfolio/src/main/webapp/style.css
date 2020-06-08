@@ -61,35 +61,6 @@ pre.lpge {
     display: inline;
 }
 
-body.home {
-    background-image: url(backgrounds/space.gif);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-body.anime {
-    background-image: url(backgrounds/kimetsu.gif);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-body.christian {
-    background-image: url(backgrounds/gospel.gif);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-body.secular {
-    background-image: url(backgrounds/rocknroll.gif);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-
 a.nextx {
     border: none;
     color: white;
@@ -143,7 +114,10 @@ div.row {
     position: sticky;
     top: 0;
 }
-.column {display: table-cell;}
+.column {
+    display: table-cell;
+    padding-bottom: 10%;
+}
 
 div.brow {
     width: 100%;
@@ -167,12 +141,6 @@ div.rsidebar {
     text-align: center;
     padding: 150px;
     background-color: rgb(222, 206, 135);
-}
-
-div.welcome {
-    bottom: 0;
-    padding: 40%;
-    position: fixed;
 }
 
 a:visited {color: white;}
