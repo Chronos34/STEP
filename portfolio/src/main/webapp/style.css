@@ -8,11 +8,6 @@
   margin-top: 20px;
 }
 
-body, html {
-  height: 100%;
-  margin: 0;
-}
-
 * {box-sizing: border-box; margin: 0;}
 
 #school {
@@ -145,14 +140,6 @@ div.rsidebar {
 
 a:visited {color: white;}
 
-#Video {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  min-width: 100%;
-  min-height: 100%;
-}
-
 footer {
     left: 0;
     bottom: 0;
@@ -161,7 +148,6 @@ footer {
 }
 
 /* Music Pages */
-#hide {display: none;}
 
 div.headers {
     width: 100%;
