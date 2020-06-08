@@ -8,11 +8,6 @@
   margin-top: 20px;
 }
 
-body, html {
-  height: 100%;
-  margin: 0;
-}
-
 * {box-sizing: border-box; margin: 0;}
 
 #school {
@@ -60,35 +55,6 @@ pre.lpge {
     font-size: 600%;
     display: inline;
 }
-
-body.home {
-    background-image: url(backgrounds/space.gif);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-body.anime {
-    background-image: url(backgrounds/kimetsu.gif);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-body.christian {
-    background-image: url(backgrounds/gospel.gif);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-body.secular {
-    background-image: url(backgrounds/rocknroll.gif);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
 
 a.nextx {
     border: none;
@@ -143,7 +109,10 @@ div.row {
     position: sticky;
     top: 0;
 }
-.column {display: table-cell;}
+.column {
+    display: table-cell;
+    padding-bottom: 10%;
+}
 
 div.brow {
     width: 100%;
@@ -169,21 +138,7 @@ div.rsidebar {
     background-color: rgb(222, 206, 135);
 }
 
-div.welcome {
-    bottom: 0;
-    padding: 40%;
-    position: fixed;
-}
-
 a:visited {color: white;}
-
-#Video {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  min-width: 100%;
-  min-height: 100%;
-}
 
 footer {
     left: 0;
@@ -193,7 +148,6 @@ footer {
 }
 
 /* Music Pages */
-#hide {display: none;}
 
 div.headers {
     width: 100%;
@@ -211,6 +165,7 @@ div.pages {
 
 div.musicbar {
     width: 15%;
+    position: fixed;
     text-align: left;
     background: rgba(0, 0, 0, 0.308);
 }
@@ -225,6 +180,7 @@ div.commentbar {
     width: 15%;
     padding: 0px;
     color: white;
+    position: fixed;
     text-align: left;
     background: rgba(0, 0, 0, 0.308);
 }
