@@ -13,7 +13,7 @@
     <script src="script.js"></script>
   </head>
 
-  <body ALIGN=CENTER onload="animeComments()">
+  <body ALIGN=CENTER onload="animeComments(); logInStatus()">
 
     <div class="row">
 
@@ -59,7 +59,7 @@
 
           </div>
 
-          <div class="column mainbar">
+          <div ALIGN=CENTER class="column mainbar">
 
             <p>Yume To Hazakura - Wotamin</p>
 
@@ -123,7 +123,7 @@
 
           </div>
 
-          <div class="column commentbar">
+          <div class="column commentbar" id="comment">
               
               <form method="POST" action="/data">
 

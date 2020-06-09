@@ -101,3 +101,11 @@ async function getUsername() {
     const name = await response.text();
     document.getElementById('name').innerText = name;
 }
+
+async function logInStatus() {
+    const response = await fetch('/background');
+    const name = await response.text();
+    if (name.length == 1) {
+        document.getElementById('comment').style.display = "none";
+    }
+}

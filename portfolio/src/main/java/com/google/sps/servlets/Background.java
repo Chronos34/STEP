@@ -38,18 +38,24 @@ public class Background extends HttpServlet {
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-      String firstName = retrieveFirstName(request, "firstname", "Anakin");
-      String lastName = retrieveLastName(request, "lastname", "Skywalker");
+      String firstName = retrieveFirstName(request, "firstname").trim();
+      String lastName = retrieveLastName(request, "lastname").trim();
       name = firstName + ' ' + lastName + '!';
+
+      if (firstName.concat(lastName).length() == 0) {
+        name = "";
+        response.sendRedirect("/comments.html");
+        return;
+      }
 
       response.sendRedirect("/background.html");
   }
 
-  private String retrieveFirstName(HttpServletRequest request, String firstName, String defaultValue) {
+  private String retrieveFirstName(HttpServletRequest request, String firstName) {
     return request.getParameter(firstName);
   }
 
-  private String retrieveLastName(HttpServletRequest request, String lastName, String defaultValue) {
+  private String retrieveLastName(HttpServletRequest request, String lastName) {
     return request.getParameter(lastName);
   }
 

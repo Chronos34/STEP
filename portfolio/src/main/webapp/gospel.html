@@ -13,7 +13,7 @@
     <script src="script.js"></script>
   </head>
 
-  <body ALIGN=CENTER onload="christianComments()">
+  <body ALIGN=CENTER onload="christianComments(); logInStatus()">
 
     <div class="row">
 
@@ -126,7 +126,7 @@
 
           </div>
 
-          <div class="column commentbar" ALIGN=LEFT>
+          <div class="column commentbar" id="comment">
               
               <form method="POST" action="/data-gospel">
 
