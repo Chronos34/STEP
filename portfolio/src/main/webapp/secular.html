@@ -13,7 +13,7 @@
     <script src="script.js"></script>
   </head>
 
-  <body ALIGN=CENTER onload="secularComments()">
+  <body ALIGN=CENTER onload="secularComments(); logInStatus()">
 
     <div class="row">
 
@@ -39,6 +39,11 @@
                 href="background.html">About Me</a></li>
                 <li><a class="poemslink poemslinks"
                 href="image.html">Image</a></li>
+                <li><a rel="external" href="/logout" id="signOut"
+                class="poemslink poemslinks">Log Out</a>
+                <li><a rel="external" href="/login" id="signIn"
+                class="poemslink poemslinks">Log In</a>
+
             </ul>
 
         </div>
@@ -61,50 +66,21 @@
 
           <div class="column mainbar">
 
-            <h1><strong>WELCOME!</strong></h1>
+            <p> Gone Gone Gone</p>
 
-            <p class="background">Hello <span id="name"></span>
-                It is nice to meet you. I am Nana Baafi Agyekum,
-                a student of <a href="https://www.rpi.edu/" id="school"
-                title="Rensselaer Polytechnic Institute" target=_blank>RPI</a>. I 
-                am a resident of Newark, New Jersey. I love to play soccer 
-                and write poems. A fun fact, I have visited <i>three</i> 
-                continents: <i>Africa, Europe</i> and <i>North America</i>. 
-                I love to eat mashed plantain(the locals of Ghana call it etoo). 
-                Here is a <a 
-                href="https://awholelotofcole.wordpress.com/2019/10/08/etomore-than-just-food-its-culture/" 
-                target=_blank>picture</a> of the dish. These are some of the 
-                projects I have worked on:
+            <iframe width="966" height="543" src="https://www.youtube.com/embed/oozQ4yV__Vw" 
+            frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen></iframe>
 
-                <br>
+            <p>Raging Fire</p>
 
-            </p>
-
-            <p style="color:black">
-                I love to listen to music and watch anime during my leisure. As for the kind 
-                of music I enjoy, let's just say anything that has a good beat and rythm. I 
-                listen to Gospel Music, Reggae, Hip Hop and a whole lot. I love asian music in 
-                particular. <i>Have you heard "Yume to hazakura"?</i> <strong>Whhaaat?</strong> 
-                You should listen to this beautiful piece. Aside that, these songs by 
-                <strong>for King and Country</strong> are a must listen to: 
-                <i><strong>"Shoulders"</strong></i>, <i><strong>"Control"</strong></i>, 
-                <i><strong>"Pioneers"</strong></i>, and <i><strong>"Burn The Ships"</strong></i>. 
-                Don't forget <b>Hillsong United</b>! <i><strong>"So will I"</strong></i> is 
-                spectacular. I will share more about my all time favourites with you. In the 
-                meantime, please enjoy what you see and leave comments on what could be 
-                done better. Thank You!
-            </p>
-
-            <br>
-
-            <button onclick="addRandomQuote()">Click Here For Random Quotes</button>
-            <div id="quote-container"></div>
-
-            <br>
+            <iframe width="966" height="543" src="https://www.youtube.com/embed/aXRODrspQpc" 
+            frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen></iframe>
 
           </div>
 
-          <div class="column commentbar" ALIGN=LEFT>
+          <div class="column commentbar" id="comment">
               
               <form method="POST" action="/data-secular">
 

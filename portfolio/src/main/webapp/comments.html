@@ -5,31 +5,30 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Comments</title>
+    <title>Alert</title>
     
     <link rel="stylesheet" href="style.css">
 
     <script src="script.js"></script>
+
+    <script type="text/javascript">
+        (function(){
+        setTimeout(function(){
+            window.location="/background.html";
+        },12000);})();
+    </script>
+
   </head>
-  <body onload="displayComments()">
-    <h1>Comments</h1>
 
-    <form method="POST" action="/data">
-      <label for="texts">Comments: </label>
-      <input type="text" id="texts" name="texts"><br>
-      <br>
-      <label for="preferedNumber">How many comments do you want displayed?: </label>
-      <input type="number" id="preferedNumber" 
-      name="preferedNumber" min="1" max="99" value="50"><br>
-      <br>
-      <button type="Submit">Submit</button>
-    </form>
+  <body>
 
-    <hr/>
-
-    <ul id="display-comment"></ul>
-
-    <button onclick="deleteMessages()">Delete All Comments</button>
+    <h3 style="color: black; text-decoration: none; padding-top: 15%">
+        Thank you for visiting Lookle, but please be aware that you will
+        not enjoy the benefit of sharing your thoughts with the community
+        or know that of others until we know you <strong>name</strong>, 
+        <strong>alias</strong> or your <strong>email</strong>.
+    </h3>
 
   </body>
+
 </html>

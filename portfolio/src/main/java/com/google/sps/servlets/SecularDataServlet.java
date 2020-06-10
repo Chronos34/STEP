@@ -25,8 +25,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.datastore.FetchOptions;
 import com.google.appengine.api.datastore.PreparedQuery;
+import com.google.appengine.api.users.UserServiceFactory;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.Query.SortDirection;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
@@ -39,6 +41,9 @@ public class SecularDataServlet extends HttpServlet {
   // This is the number of comments that should
   // be printed when the comments page is loaded
   private int commentCount = 99;
+  private String name = "";
+
+  private UserService userService = UserServiceFactory.getUserService();
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -55,9 +60,10 @@ public class SecularDataServlet extends HttpServlet {
     for (Entity entity : results.asIterable(FetchOptions.Builder.withLimit(commentCount))) {
       long id = entity.getKey().getId();
       String Statement = (String) entity.getProperty("comment");
+      String identity = (String) entity.getProperty("identity");
       long Time = (long) entity.getProperty("time");
 
-      Comment messages = new Comment(id, Statement, Time);
+      Comment messages = new Comment(id, Statement, Time, identity);
       comments.add(messages);
     }
 
@@ -72,6 +78,9 @@ public class SecularDataServlet extends HttpServlet {
       long time = System.currentTimeMillis();
       String statement = comment(request, "texts");
       commentCount = maxComments(request, "preferedNumber");
+      String names = request.getParameter("name");
+
+      if (names != null) {name = names.trim();}
 
       if (commentCount < 0) {
         response.setContentType("text/html");
@@ -79,22 +88,36 @@ public class SecularDataServlet extends HttpServlet {
         return;
       }
 
-      addComment(statement, time);
+      addComment(statement, time, name);
 
       response.sendRedirect("/secular.html");
   }
 
   private String comment(HttpServletRequest request, String message) {
-    return request.getParameter(message);
+    String content = request.getParameter(message);
+
+    // An empty string is returned so the program doesn't
+    // crash when trim is called on the statement string.
+    // This makes it easier for addComment to function optimally.
+    
+    if (content == null) {return "  ";}
+
+    return content;
   }
 
-  private void addComment(String statements, long timestamp) {
+  private void addComment(String statements, long timestamp, String nickname) {
 
     if (statements.trim().length() == 0) {return;}
+
+    String identifier;
+
+    if (nickname.length() != 0) {identifier = nickname;}
+    else {identifier = userService.getCurrentUser().getEmail();}
 
     Entity comments = new Entity("Secular");
     comments.setProperty("comment", statements);
     comments.setProperty("time", timestamp);
+    comments.setProperty("identity", identifier);
 
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     datastore.put(comments);

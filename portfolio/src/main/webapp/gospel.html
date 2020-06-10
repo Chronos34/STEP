@@ -13,7 +13,7 @@
     <script src="script.js"></script>
   </head>
 
-  <body ALIGN=CENTER onload="christianComments()">
+  <body ALIGN=CENTER onload="christianComments(); logInStatus()">
 
     <div class="row">
 
@@ -39,6 +39,11 @@
                 href="background.html">About Me</a></li>
                 <li><a class="poemslink poemslinks"
                 href="image.html">Image</a></li>
+                <li><a rel="external" href="/logout" id="signOut"
+                class="poemslink poemslinks">Log Out</a>
+                <li><a rel="external" href="/login" id="signIn"
+                class="poemslink poemslinks">Log In</a>
+
             </ul>
 
         </div>
@@ -124,9 +129,23 @@
             frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
             allowfullscreen></iframe>
 
+            <p>Come To The Table</p>
+
+            <iframe width="966" height="433" src="https://www.youtube.com/embed/DXXxLwxfo0U" 
+            frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen></iframe>
+
+            <p>Wanna Go Back</p>
+
+            <iframe width="966" height="543" src="https://www.youtube.com/embed/yUvxhGRUR3s" 
+            frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen></iframe>
+
+            
+
           </div>
 
-          <div class="column commentbar" ALIGN=LEFT>
+          <div class="column commentbar" id="comment">
               
               <form method="POST" action="/data-gospel">
 

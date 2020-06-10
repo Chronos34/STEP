@@ -34,6 +34,7 @@ public class DeleteComment extends HttpServlet {
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     
+    // Kind refers to the kind of entity that was created.
     String kinds = request.getParameter("kind");
 
     deleteComment(kinds);

@@ -13,7 +13,7 @@
     <script src="script.js"></script>
   </head>
 
-  <body onload="getUsername()">
+  <body onload="getUsername(); createMap(); logInStatus(); updateServlets()">
 
       <div class="row">
 
@@ -66,8 +66,12 @@
             class="blendin blendIn"><i>Background</i></a>
             <a rel="next" href="image.html" 
             class="blendin blendIn"><i>Images</i></a>
-            <a rel="next" href="anime.html" 
+            <a rel="next" href="anime.html"
             class="blendin blendIn"><i>Music</i></a>
+            <a rel="external" href="/login" id="signIn"
+            class="blendin blendIn"><i>Log In</i></a>
+            <a rel="external" href="/logout" id="signOut"
+            class="blendin blendIn"><i>Log Out</i></a>
 
 
           </div>
@@ -76,7 +80,7 @@
 
             <h1><strong>WELCOME!</strong></h1>
 
-            <p class="background">Hello <span id="name"></span>
+            <p class="background">Hello <span id="name"></span> 
                 It is nice to meet you. I am Nana Baafi Agyekum,
                 a student of <a href="https://www.rpi.edu/" id="school"
                 title="Rensselaer Polytechnic Institute" target=_blank>RPI</a>. I 
@@ -84,14 +88,14 @@
                 and write poems. A fun fact, I have visited <i>three</i> 
                 continents: <i>Africa, Europe</i> and <i>North America</i>. 
                 I love to eat mashed plantain(the locals of Ghana call it etoo). 
-                Here is a <a 
+                Here is a <a style="color: brown"
                 href="https://awholelotofcole.wordpress.com/2019/10/08/etomore-than-just-food-its-culture/" 
                 target=_blank>picture</a> of the dish. These are some of the 
                 projects I have worked on:
 
                 <br>
 
-                <ul>
+                <ul style="color: black">
                     <li>A basic Pokemon Game Simulation</li>
                     <li>The marketplace platform on Codecademy</li>
                     <li>A tourist sites search engine on Codecademy</li>
@@ -120,6 +124,8 @@
             <div id="quote-container"></div>
 
             <br>
+
+            <div ALIGN=CENTER id="maps"></div>
 
           </div>
 

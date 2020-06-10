@@ -68,8 +68,11 @@ function createMsgElement(comment) {
   const msgElement = document.createElement('li');
   msgElement.className = 'comment';
 
+  const nameElement = document.createElement('strong');
+  nameElement.innerText = comment.identity;
+
   const statementElement = document.createElement('span');
-  statementElement.innerText = comment.message;
+  statementElement.innerText = `${nameElement.innerText}: ${comment.message}`;
 
   msgElement.appendChild(statementElement);
   return msgElement;
@@ -99,5 +102,82 @@ async function deleteAnimeComments() {
 async function getUsername() {
     const response = await fetch('/background');
     const name = await response.text();
-    document.getElementById('name').innerText = name;
+    if (name.trim().length == 0) {
+        document.getElementById('name').innerText = "Anakin Skywalker!";
+        return;
+    }
+    document.getElementById('name').innerText = name.trim() + '!';
+}
+
+// This function passes the user's chosen name
+// to all commenting servlets to ensure
+// each comment is attributed to a user
+async function updateServlets() {
+    const response = await fetch('/background');
+    const names = await response.text();
+    if (names.trim().length != 0 ) {
+        const params = new URLSearchParams();
+        params.append("name", names.trim());
+        params.append("preferedNumber", "1");
+        await fetch('/data-secular', {method: 'POST', body: params});
+        await fetch('/data-gospel', {method: 'POST', body: params});
+        await fetch('/data', {method: 'POST', body: params});
+    }
+}
+
+// logInStatus is called on every page to ensure
+// certain prvileges are enjoyed by users who
+// verify their identity or chhose an alias.
+async function logInStatus() {
+    const response = await fetch('/background');
+    const name = await response.text();
+    const secondResponse = await fetch('/login', {method: 'POST'});
+    const isLoggedIn = await secondResponse.text();
+    if (name.trim().length == 0 && isLoggedIn.trim() == "false") {
+        document.getElementById('signOut').style.display = "none";
+        document.getElementById('comment').style.display = "none";
+    } else {document.getElementById('signIn').style.display = "none";}
+}
+
+// Create the script tag, set the appropriate attributes
+var script = document.createElement('script');
+script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyB-fUhvH9z-oYr-lT8e7SvKzREdT68OVh8&callback=initMap';
+script.defer = true;
+script.async = true;
+
+// Attach your callback function to the `window` object
+window.initMap = function() {
+};
+
+// Append the 'script' element to 'head'
+document.head.appendChild(script);
+      
+function createMap() {
+    const map = new google.maps.Map(
+        document.getElementById('maps'),
+        {center: {lat: 37.422, lng: -122.084}, zoom: 2});
+    
+    const school = new google.maps.Marker({
+    position: {lat: 42.7297667, lng:  -73.6810771},
+    map: map,
+    title: 'Rensselaer Polytechnic Institute'
+  });
+
+  const uk_palace = new google.maps.Marker({
+    position: {lat: 51.4991521, lng: -0.143848},
+    map: map,
+    title: 'Buckingham Palace'
+  });
+
+  const gh_highschool = new google.maps.Marker({
+    position: {lat: 5.6628659, lng: -0.1739283},
+    map: map,
+    title: 'The Best High School'
+  });
+
+  const uk_historic = new google.maps.Marker({
+    position: {lat: 51.5080934, lng: -0.1302322},
+    map: map,
+    title: 'A Truly Historic Place'
+  });
 }

@@ -12,52 +12,44 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-//This file requests usernames and displays a welcome message.
-
 package com.google.sps.servlets;
 
+import com.google.appengine.api.datastore.*;
+import com.google.appengine.api.users.UserService;
+import com.google.appengine.api.users.UserServiceFactory;
 import java.io.IOException;
-import java.util.ArrayList;
-import com.google.gson.Gson;
+import java.io.PrintWriter;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/background")
-public class Background extends HttpServlet {
+@WebServlet("/login")
+public class SignIn extends HttpServlet {
 
-  private String name = "";
-
+  private UserService userService = UserServiceFactory.getUserService();
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-   
-    response.setContentType("text/html;");
-    response.getWriter().println(name);
+
+    if (!userService.isUserLoggedIn()) {
+      response.sendRedirect(userService.createLoginURL("/login"));
+    } 
+    
+    if (userService.isUserLoggedIn()) {response.sendRedirect("/background.html");}
+    
   }
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-      String firstName = retrieveFirstName(request, "firstname").trim();
-      String lastName = retrieveLastName(request, "lastname").trim();
-      name = firstName + ' ' + lastName;
 
-      if (firstName.concat(lastName).length() == 0) {
-        name = "";
-        response.sendRedirect("/comments.html");
+    if (userService.isUserLoggedIn()) {
+        response.setContentType("text/html;");
+        response.getWriter().println("true");
         return;
-      }
+    }
 
-      response.sendRedirect("/background.html");
+    response.setContentType("text/html;");
+    response.getWriter().println("false");
   }
-
-  private String retrieveFirstName(HttpServletRequest request, String firstName) {
-    return request.getParameter(firstName);
-  }
-
-  private String retrieveLastName(HttpServletRequest request, String lastName) {
-    return request.getParameter(lastName);
-  }
-
 }

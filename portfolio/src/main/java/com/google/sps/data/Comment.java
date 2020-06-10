@@ -22,10 +22,12 @@ public final class Comment {
   private final long id;
   private final String message;
   private final long time;
+  private final String identity;
 
-  public Comment(long id, String statement, long timestamp) {
+  public Comment(long id, String statement, long timestamp, String identifier) {
     this.id = id;
     this.message = statement;
     this.time = timestamp;
+    this.identity = identifier;
   }
 }
