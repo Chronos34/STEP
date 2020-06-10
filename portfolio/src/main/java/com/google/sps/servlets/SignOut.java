@@ -24,32 +24,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/login")
-public class SignIn extends HttpServlet {
+@WebServlet("/logout")
+public class SignOut extends HttpServlet {
 
   private UserService userService = UserServiceFactory.getUserService();
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-    if (!userService.isUserLoggedIn()) {
-      response.sendRedirect(userService.createLoginURL("/login"));
-    } 
-    
-    if (userService.isUserLoggedIn()) {response.sendRedirect("/background.html");}
-    
-  }
-
-  @Override
-  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
     if (userService.isUserLoggedIn()) {
-        response.setContentType("text/html;");
-        response.getWriter().println("true");
-        return;
+        response.sendRedirect(userService.createLogoutURL("/logout"));
     }
 
-    response.setContentType("text/html;");
-    response.getWriter().println("false");
+    if (!userService.isUserLoggedIn()) {response.sendRedirect("/goodbye.html");}
+    
   }
 }

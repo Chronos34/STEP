@@ -70,6 +70,8 @@ a:hover.poemslink {text-decoration: underline;}
 
 a.poemslinks {text-decoration: none;}
 
+a {color: white;}
+
 a.blendin {
     color: white;
     font-size: 50px;
@@ -94,13 +96,14 @@ div.poems {
     background-color: rgb(57, 154, 235);
 }
 
-div.poems a, div.poems a:visited {
+div.poems a, div.poems{
     color: blue !important;
 }
 
 div.container {
     display: table;
     width: 100%;
+    padding-bottom: 10%;
 }
 
 div.row {
@@ -111,7 +114,6 @@ div.row {
 }
 .column {
     display: table-cell;
-    padding-bottom: 10%;
 }
 
 div.brow {

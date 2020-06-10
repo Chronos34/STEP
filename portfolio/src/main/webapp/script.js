@@ -68,8 +68,11 @@ function createMsgElement(comment) {
   const msgElement = document.createElement('li');
   msgElement.className = 'comment';
 
+  const nameElement = document.createElement('strong');
+  nameElement.innerText = comment.identity;
+
   const statementElement = document.createElement('span');
-  statementElement.innerText = comment.message;
+  statementElement.innerText = `${nameElement.innerText}: ${comment.message}`;
 
   msgElement.appendChild(statementElement);
   return msgElement;
@@ -99,13 +102,39 @@ async function deleteAnimeComments() {
 async function getUsername() {
     const response = await fetch('/background');
     const name = await response.text();
-    document.getElementById('name').innerText = name;
+    if (name.trim().length == 0) {
+        document.getElementById('name').innerText = "Anakin Skywalker!";
+        return;
+    }
+    document.getElementById('name').innerText = name.trim() + '!';
 }
 
+// This function passes the user's chosen name
+// to all commenting servlets to ensure
+// each comment is attributed to a user
+async function updateServlets() {
+    const response = await fetch('/background');
+    const names = await response.text();
+    if (names.trim().length != 0 ) {
+        const params = new URLSearchParams();
+        params.append("name", names.trim());
+        params.append("preferedNumber", "1");
+        await fetch('/data-secular', {method: 'POST', body: params});
+        await fetch('/data-gospel', {method: 'POST', body: params});
+        await fetch('/data', {method: 'POST', body: params});
+    }
+}
+
+// logInStatus is called on every page to ensure
+// certain prvileges are enjoyed by users who
+// verify their identity or chhose an alias.
 async function logInStatus() {
     const response = await fetch('/background');
     const name = await response.text();
-    if (name.length == 1) {
+    const secondResponse = await fetch('/login', {method: 'POST'});
+    const isLoggedIn = await secondResponse.text();
+    if (name.trim().length == 0 && isLoggedIn.trim() == "false") {
+        document.getElementById('signOut').style.display = "none";
         document.getElementById('comment').style.display = "none";
-    }
+    } else {document.getElementById('signIn').style.display = "none";}
 }

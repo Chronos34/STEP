@@ -29,6 +29,7 @@ public class Background extends HttpServlet {
 
   private String name = "";
 
+
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
    
@@ -40,7 +41,7 @@ public class Background extends HttpServlet {
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
       String firstName = retrieveFirstName(request, "firstname").trim();
       String lastName = retrieveLastName(request, "lastname").trim();
-      name = firstName + ' ' + lastName + '!';
+      name = firstName + ' ' + lastName;
 
       if (firstName.concat(lastName).length() == 0) {
         name = "";
