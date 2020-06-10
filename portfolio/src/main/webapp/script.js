@@ -156,4 +156,28 @@ function createMap() {
     const map = new google.maps.Map(
         document.getElementById('maps'),
         {center: {lat: 37.422, lng: -122.084}, zoom: 2});
+    
+    const school = new google.maps.Marker({
+    position: {lat: 42.7297667, lng:  -73.6810771},
+    map: map,
+    title: 'Rensselaer Polytechnic Institute'
+  });
+
+  const uk_palace = new google.maps.Marker({
+    position: {lat: 51.4991521, lng: -0.143848},
+    map: map,
+    title: 'Buckingham Palace'
+  });
+
+  const gh_highschool = new google.maps.Marker({
+    position: {lat: 5.6628659, lng: -0.1739283},
+    map: map,
+    title: 'The Best High School'
+  });
+
+  const uk_historic = new google.maps.Marker({
+    position: {lat: 51.5080934, lng: -0.1302322},
+    map: map,
+    title: 'A Truly Historic Place'
+  });
 }
