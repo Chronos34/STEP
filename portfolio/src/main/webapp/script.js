@@ -161,23 +161,43 @@ function createMap() {
     position: {lat: 42.7297667, lng:  -73.6810771},
     map: map,
     title: 'Rensselaer Polytechnic Institute'
-  });
+    });
+
+    school.addListener('click', function() {
+    map.setZoom(17);
+    map.setCenter(school.getPosition());
+    });
 
   const uk_palace = new google.maps.Marker({
     position: {lat: 51.4991521, lng: -0.143848},
     map: map,
     title: 'Buckingham Palace'
-  });
+    });
+
+    uk_palace.addListener('click', function() {
+    map.setZoom(17);
+    map.setCenter(uk_palace.getPosition());
+    });
 
   const gh_highschool = new google.maps.Marker({
     position: {lat: 5.6628659, lng: -0.1739283},
     map: map,
     title: 'The Best High School'
-  });
+    });
 
-  const uk_historic = new google.maps.Marker({
+    gh_highschool.addListener('click', function() {
+    map.setZoom(17);
+    map.setCenter(gh_highschool.getPosition());
+    });
+
+   const uk_historic = new google.maps.Marker({
     position: {lat: 51.5080934, lng: -0.1302322},
     map: map,
     title: 'A Truly Historic Place'
-  });
+    });
+
+    uk_historic.addListener('click', function() {
+    map.setZoom(17);
+    map.setCenter(uk_historic.getPosition());
+    });
 }
