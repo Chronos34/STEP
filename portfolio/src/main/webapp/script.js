@@ -138,3 +138,22 @@ async function logInStatus() {
         document.getElementById('comment').style.display = "none";
     } else {document.getElementById('signIn').style.display = "none";}
 }
+
+// Create the script tag, set the appropriate attributes
+var script = document.createElement('script');
+script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyB-fUhvH9z-oYr-lT8e7SvKzREdT68OVh8&callback=initMap';
+script.defer = true;
+script.async = true;
+
+// Attach your callback function to the `window` object
+window.initMap = function() {
+};
+
+// Append the 'script' element to 'head'
+document.head.appendChild(script);
+      
+function createMap() {
+    const map = new google.maps.Map(
+        document.getElementById('maps'),
+        {center: {lat: 37.422, lng: -122.084}, zoom: 2});
+}

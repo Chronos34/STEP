@@ -196,3 +196,9 @@ div.musicbrow {
     text-align: center;
     background-color: black;
 }
+
+#maps {
+  border: thin solid black;
+  height: 700px;
+  width: 800px;
+}
