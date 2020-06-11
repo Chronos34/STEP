@@ -164,18 +164,32 @@ function createMap() {
     });
 
     school.addListener('click', function() {
-    map.setZoom(17);
+    map.setZoom(20);
+    map.setMapTypeId('satellite');
     map.setCenter(school.getPosition());
     });
 
+    const japan = new google.maps.Marker({
+    position: {lat: 35.7096369, lng:  139.8106831},
+    map: map,
+    title: 'Tokyo Skytree: dream destination'
+    });
+
+    japan.addListener('click', function() {
+    map.setZoom(20);
+    map.setMapTypeId('satellite');
+    map.setCenter(japan.getPosition());
+    });
+
   const uk_palace = new google.maps.Marker({
-    position: {lat: 51.4991521, lng: -0.143848},
+    position: {lat: 51.501505, lng: -0.141388},
     map: map,
     title: 'Buckingham Palace'
     });
 
     uk_palace.addListener('click', function() {
-    map.setZoom(17);
+    map.setZoom(20);
+    map.setMapTypeId('satellite');
     map.setCenter(uk_palace.getPosition());
     });
 
@@ -186,18 +200,20 @@ function createMap() {
     });
 
     gh_highschool.addListener('click', function() {
-    map.setZoom(17);
+    map.setZoom(20);
+    map.setMapTypeId('satellite');
     map.setCenter(gh_highschool.getPosition());
     });
 
    const uk_historic = new google.maps.Marker({
-    position: {lat: 51.5080934, lng: -0.1302322},
+    position: {lat: 51.507886, lng: -0.127982},
     map: map,
     title: 'A Truly Historic Place'
     });
 
     uk_historic.addListener('click', function() {
-    map.setZoom(17);
+    map.setZoom(20);
+    map.setMapTypeId('satellite');
     map.setCenter(uk_historic.getPosition());
     });
 }
