@@ -63,6 +63,15 @@ function christianComments() {
   });
 }
 
+function uploadedImages() {
+  fetch('/image-upload').then(response => response.json()).then((comments) => {
+    const commentListElement = document.getElementById('display-images');
+    comments.forEach((comment) => {
+      commentListElement.appendChild(createMsgElement(comment));
+    })
+  });
+}
+
 
 function createMsgElement(comment) {
   const msgElement = document.createElement('li');
@@ -158,62 +167,62 @@ function createMap() {
         {center: {lat: 37.422, lng: -122.084}, zoom: 2});
     
     const school = new google.maps.Marker({
-    position: {lat: 42.7297667, lng:  -73.6810771},
-    map: map,
-    title: 'Rensselaer Polytechnic Institute'
+        position: {lat: 42.7297667, lng:  -73.6810771},
+        map: map,
+        title: 'Rensselaer Polytechnic Institute'
     });
 
     school.addListener('click', function() {
-    map.setZoom(20);
-    map.setMapTypeId('satellite');
-    map.setCenter(school.getPosition());
+        map.setZoom(20);
+        map.setMapTypeId('satellite');
+        map.setCenter(school.getPosition());
     });
 
     const japan = new google.maps.Marker({
-    position: {lat: 35.7096369, lng:  139.8106831},
-    map: map,
-    title: 'Tokyo Skytree: dream destination'
+        position: {lat: 35.7096369, lng:  139.8106831},
+        map: map,
+        title: 'Tokyo Skytree: dream destination'
     });
 
     japan.addListener('click', function() {
-    map.setZoom(20);
-    map.setMapTypeId('satellite');
-    map.setCenter(japan.getPosition());
+        map.setZoom(20);
+        map.setMapTypeId('satellite');
+        map.setCenter(japan.getPosition());
     });
 
   const uk_palace = new google.maps.Marker({
-    position: {lat: 51.501505, lng: -0.141388},
-    map: map,
-    title: 'Buckingham Palace'
+        position: {lat: 51.501505, lng: -0.141388},
+        map: map,
+        title: 'Buckingham Palace'
     });
 
     uk_palace.addListener('click', function() {
-    map.setZoom(20);
-    map.setMapTypeId('satellite');
-    map.setCenter(uk_palace.getPosition());
+        map.setZoom(20);
+        map.setMapTypeId('satellite');
+        map.setCenter(uk_palace.getPosition());
     });
 
   const gh_highschool = new google.maps.Marker({
-    position: {lat: 5.6628659, lng: -0.1739283},
-    map: map,
-    title: 'The Best High School'
+        position: {lat: 5.6628659, lng: -0.1739283},
+        map: map,
+        title: 'The Best High School'
     });
 
     gh_highschool.addListener('click', function() {
-    map.setZoom(20);
-    map.setMapTypeId('satellite');
-    map.setCenter(gh_highschool.getPosition());
+        map.setZoom(20);
+        map.setMapTypeId('satellite');
+        map.setCenter(gh_highschool.getPosition());
     });
 
    const uk_historic = new google.maps.Marker({
-    position: {lat: 51.507886, lng: -0.127982},
-    map: map,
-    title: 'A Truly Historic Place'
+        position: {lat: 51.507886, lng: -0.127982},
+        map: map,
+        title: 'A Truly Historic Place'
     });
 
     uk_historic.addListener('click', function() {
-    map.setZoom(20);
-    map.setMapTypeId('satellite');
-    map.setCenter(uk_historic.getPosition());
+        map.setZoom(20);
+        map.setMapTypeId('satellite');
+        map.setCenter(uk_historic.getPosition());
     });
 }

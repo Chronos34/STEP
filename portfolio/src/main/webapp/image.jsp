@@ -1,3 +1,27 @@
+<%--
+Copyright 2019 Google LLC
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+--%>
+
+<%-- The Java code in this JSP file runs on the server when the user navigates
+     to the homepage. This allows us to insert the Blobstore upload URL into the
+     form without building the HTML using print statements in a servlet. --%>
+<%@ page import="com.google.appengine.api.blobstore.BlobstoreService" %>
+<%@ page import="com.google.appengine.api.blobstore.BlobstoreServiceFactory" %>
+<% BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
+   String uploadUrl = blobstoreService.createUploadUrl("/image-upload"); %>
+
 <!DOCTYPE html>
 <html>
 
@@ -13,7 +37,7 @@
     <script src="script.js"></script>
   </head>
 
-  <body onload="logInStatus()">
+  <body onload="logInStatus(); uploadedImages()">
 
       <div class="row">
 
@@ -64,7 +88,7 @@
 
             <a rel="next" href="background.html" 
             class="blendin blendIn"><i>Background</i></a>
-            <a rel="next" href="image.html" 
+            <a rel="next" href="image.jsp" 
             class="blendin blendIn"><i>Images</i></a>
             <a rel="next" href="anime.html" 
             class="blendin blendIn"><i>Music</i></a>
@@ -123,6 +147,15 @@
             width='200' height='150'></a>
             <a href="images/trd.jpg">
             <img src='/images/trd.jpg' alt='Buckingham Palace' width='200' height='150'></a>
+
+            <br><br>
+
+            <form method="POST" enctype="multipart/form-data" action="<%= uploadUrl %>">
+                <p>Upload Image(s):</p>
+                <input type="file" name="image" multiple="true">
+                <br/><br/>
+                <button>Submit</button>
+            </form>
             
 
           </div>
