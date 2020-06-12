@@ -147,6 +147,8 @@ limitations under the License.
             width='200' height='150'></a>
             <a href="images/trd.jpg">
             <img src='/images/trd.jpg' alt='Buckingham Palace' width='200' height='150'></a>
+            
+            <a id="display-images"></a>
 
             <br><br>
 
