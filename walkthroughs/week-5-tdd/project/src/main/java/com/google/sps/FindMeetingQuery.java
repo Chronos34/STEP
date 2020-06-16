@@ -14,10 +14,67 @@
 
 package com.google.sps;
 
+import java.util.List;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+
 
 public final class FindMeetingQuery {
+
+  public List<Event> sortedEvents(Collection<Event> events) {
+      List<Event> event = new ArrayList<> (events);
+      Collections.sort(event, (Event a, Event b) -> TimeRange.ORDER_BY_START.compare(a.getWhen(), b.getWhen()) );
+      return Collections.unmodifiableList(event);
+  }
+
   public Collection<TimeRange> query(Collection<Event> events, MeetingRequest request) {
-    throw new UnsupportedOperationException("TODO: Implement this method.");
+    
+    /* timeSlot is initialized with a whole day slot to be returned as
+    an answer in the event no events are scheduled for that day. */
+    TimeRange timeSlot = TimeRange.WHOLE_DAY;
+    int eventDuration = (int) request.getDuration();
+
+    Collection<TimeRange> answer = new ArrayList<>();
+
+    if (events.size() == 0 && timeSlot.duration() >= eventDuration) {answer.add(timeSlot);}
+    else if (events.size() != 0) {
+
+        int end;
+        int start = TimeRange.START_OF_DAY;
+
+        events = sortedEvents(events);
+
+        for (Event event : events) {
+
+            /* The block below helps the function to determine when a scheduled event in
+             'Collection<Event> events' should be ignored and have it's time range incorporated 
+             into an available time slot for a meeting request. */
+            if (Collections.disjoint(request.getAttendees(), event.getAttendees())) {
+
+                /* The conditional block below helps the function to determine when to
+                create a schedule that allows optional attendees to attend an event. */
+                if (request.getAttendees().size() == 0) {
+
+                    if (Collections.disjoint(request.getOptionalAttendees(), event.getAttendees())) {continue;}
+
+                } 
+                else if (answer.size() == 0) {continue;}
+            }
+
+            end = event.getWhen().start();
+            timeSlot = TimeRange.fromStartEnd(start, end, false);
+            if (timeSlot.duration() >= eventDuration) {answer.add(timeSlot);}
+
+            // The line below ensures when start time is not set to a time frame that will
+            // lead to an overlap with other important meetings for attendees.
+            if (event.getWhen().end() >= start) {start = event.getWhen().end();}
+        }
+
+        timeSlot = TimeRange.fromStartEnd(start, TimeRange.END_OF_DAY, true);
+        if (timeSlot.duration() >= eventDuration) {answer.add(timeSlot);}
+    }
+
+    return answer;
   }
 }
